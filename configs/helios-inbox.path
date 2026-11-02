@@ -1,0 +1,6 @@
+[Path]
+PathChanged=/srv/helios/inbox
+Unit=helios-archive.service
+
+[Install]
+WantedBy=paths.target
