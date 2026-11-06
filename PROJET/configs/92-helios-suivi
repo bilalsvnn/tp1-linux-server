@@ -1,0 +1,13 @@
+# Delegation portail de suivi - equipe suivi (lea)
+# Commandes exactes : aucune option supplementaire acceptee, pas de joker.
+# --no-pager impose : sinon systemctl/journalctl ouvrent less en root (evasion de shell).
+Cmnd_Alias SUIVI_SVC = /usr/bin/systemctl restart helios-suivi.service, \
+                       /usr/bin/systemctl status --no-pager helios-suivi.service, \
+                       /usr/bin/systemctl start helios-suivi-publish.service
+Cmnd_Alias SUIVI_LOG = /usr/bin/journalctl --no-pager -n 100 -u helios-suivi.service, \
+                       /usr/bin/journalctl --no-pager -n 100 -u helios-suivi-publish.service
+
+Defaults:%suivi   timestamp_timeout=5, passwd_tries=3
+Defaults:%suivi   logfile=/var/log/sudo-suivi.log
+
+%suivi  ALL = (root) SUIVI_SVC, SUIVI_LOG

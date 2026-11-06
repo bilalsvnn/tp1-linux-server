@@ -1,0 +1,45 @@
+[Unit]
+Description=Portail de suivi des tournees Helios (HTTP 8080)
+After=network.target
+PartOf=helios.target
+
+[Service]
+Type=simple
+User=helios-suivi
+Group=helios-suivi
+ExecStart=/usr/bin/python3 -m http.server 8080 --bind 0.0.0.0 --directory /srv/helios/suivi/www
+Restart=on-failure
+RestartSec=3s
+MemoryMax=128M
+CPUQuota=50%
+
+# Durcissement (modele helios-collect, TP1) : lecture seule partout
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+PrivateUsers=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+ProtectProc=invisible
+ProcSubset=pid
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RestrictAddressFamilies=AF_INET AF_UNIX
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+CapabilityBoundingSet=
+RemoveIPC=yes
+UMask=0027
+
+[Install]
+WantedBy=helios.target

@@ -1,0 +1,7 @@
+NEXT                        LEFT         LAST                        PASSED    UNIT                       ACTIVATES
+Thu 2026-11-05 11:38:00 CET 1min 0s left Thu 2026-11-05 11:36:00 CET 59s ago   helios-suivi-publish.timer helios-suivi-publish.service
+Thu 2026-11-05 11:38:00 CET 1min 0s left Thu 2026-11-05 11:36:00 CET 59s ago   helios-watch-auth.timer    helios-watch-auth.service
+Fri 2026-11-06 02:30:30 CET 14h left     Thu 2026-11-05 10:52:08 CET 44min ago helios-archive.timer       helios-archive.service
+Fri 2026-11-06 03:15:00 CET 15h left     -                           -         helios-suivi-backup.timer  helios-suivi-backup.service
+
+4 timers listed.

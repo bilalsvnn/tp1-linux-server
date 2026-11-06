@@ -1,0 +1,26 @@
+[Unit]
+Description=Publication de etat.json pour le portail de suivi Helios
+
+[Service]
+Type=oneshot
+User=helios-suivi
+Group=helios-suivi
+ExecStart=/usr/local/sbin/helios-suivi-publish.sh
+
+# Ecriture autorisee uniquement dans www
+NoNewPrivileges=yes
+ProtectSystem=strict
+ReadWritePaths=/srv/helios/suivi/www
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+PrivateNetwork=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=yes
+RestrictSUIDSGID=yes
+LockPersonality=yes
+SystemCallArchitectures=native
+CapabilityBoundingSet=
